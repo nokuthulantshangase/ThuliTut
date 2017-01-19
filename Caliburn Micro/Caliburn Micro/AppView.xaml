@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Caliburn_Micro.AppView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Caliburn_Micro"
+             mc:Ignorable="d" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cal="http://www.caliburnproject.org">
+
+    <Grid Background="SkyBlue"  Height="380" Width="610">
+        <RepeatButton x:Name="ChangeMessage" Content="Increment By +1" VerticalAlignment="Top" Margin="0,10,10,0" cal:Message.Attach="[Event Click]=[Action ChangeMessage(2)]" HorizontalAlignment="Right" Height="25" Width="140" RenderTransformOrigin="0.357,4">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <cal:ActionMessage MethodName="ChangeMessage" >
+                    <cal:Parameter Value="1"/>
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </RepeatButton>
+        <RepeatButton x:Name="button" Content="Increment By +2" Margin="225,10,185,0" VerticalAlignment="Top" Height="25">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <cal:ActionMessage MethodName="ChangeMessage" >
+                        <cal:Parameter Value="2"/>
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </RepeatButton>
+        <RepeatButton Name="button1" Content="Increment By +5" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Left" Width="155">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <cal:ActionMessage MethodName="ChangeMessage" >
+                        <cal:Parameter Value="5"/>
+                    </cal:ActionMessage>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </RepeatButton>
+        <TextBlock Name="Message" Margin="20" FontSize="150" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <UniformGrid Columns="2" VerticalAlignment="Bottom">
+            <Slider Name="Delta" Minimum="0" Maximum="5" Margin="15"/>
+            <Button Name="ChangeMessage1" Content="Increment" Margin="15">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <cal:ActionMessage MethodName="ChangeMessage" >
+                            <cal:Parameter Value="10"/>
+                        </cal:ActionMessage>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </UniformGrid>
+    </Grid>
+    
+   
+</UserControl>
